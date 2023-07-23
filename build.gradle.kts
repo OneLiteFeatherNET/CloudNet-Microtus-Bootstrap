@@ -44,7 +44,9 @@ application {
 }
 
 tasks {
-    create("createServerJar", ShadowJar::class) {
+    shadowJar {
         archiveVersion.set("")
+        archiveClassifier.set("")
+        archiveBaseName.set("application")
     }
 }
