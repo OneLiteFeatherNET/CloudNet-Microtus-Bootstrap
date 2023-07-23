@@ -1,3 +1,4 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.ajoberstar.grgit.Grgit
 import java.util.*
 
@@ -5,6 +6,7 @@ plugins {
     id("java")
     application
     id("org.ajoberstar.grgit") version "5.2.0"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 var baseVersion by extra("1.0.0")
@@ -42,7 +44,7 @@ application {
 }
 
 tasks {
-    create("createServerJar", Jar::class) {
+    create("createServerJar", ShadowJar::class) {
         archiveVersion.set("")
     }
 }
