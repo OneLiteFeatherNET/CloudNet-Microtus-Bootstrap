@@ -40,3 +40,9 @@ dependencies {
 application {
     mainClass.set("net.onelitefeather.microtus.cloudnet.Bootstrap")
 }
+
+tasks {
+    create("createServerJar", Jar::class) {
+        archiveVersion.set("")
+    }
+}
