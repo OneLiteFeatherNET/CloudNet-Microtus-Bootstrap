@@ -36,4 +36,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: CloudNet Bootstrap Archive
-          path: build/libs/CloudNetMinestomBootstrap.jar
+          path: build/libs/application.jar
