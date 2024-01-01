@@ -37,7 +37,7 @@ repositories {
 
 dependencies {
     implementation("net.onelitefeather.microtus:Minestom:1.1.1")
-    implementation("net.kyori:adventure-text-minimessage:4.14.0")
+    implementation("net.kyori:adventure-text-minimessage:4.15.0")
 
 }
 
