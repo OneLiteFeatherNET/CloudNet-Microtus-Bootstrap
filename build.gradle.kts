@@ -5,7 +5,7 @@ import java.util.*
 plugins {
     id("java")
     application
-    id("org.ajoberstar.grgit") version "5.2.1"
+    id("org.ajoberstar.grgit") version "5.2.2"
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
