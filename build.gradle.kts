@@ -1,7 +1,6 @@
 plugins {
     java
     application
-    id("org.ajoberstar.grgit") version "5.2.2"
     id("io.github.goooler.shadow") version "8.1.7"
     alias(libs.plugins.publishdata)
     `maven-publish`

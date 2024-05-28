@@ -1,4 +1,4 @@
-rootProject.name = "CloudNetMinestomBootstrap"
+rootProject.name = "CloudNetMicrotusBootstrap"
 
 pluginManagement {
     repositories {
