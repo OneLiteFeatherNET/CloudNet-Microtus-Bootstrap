@@ -15,10 +15,15 @@ repositories {
     maven("https://jitpack.io")
 }
 
+configurations.all {
+    resolutionStrategy.cacheDynamicVersionsFor(1, "minutes")
+}
+
 dependencies {
     implementation(platform(libs.microtus.bom))
-    compileOnly(libs.microtus.core)
+    implementation(libs.microtus.core)
     implementation("net.kyori:adventure-text-minimessage:4.16.0")
+
 
 }
 

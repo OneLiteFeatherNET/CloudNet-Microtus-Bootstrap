@@ -28,7 +28,9 @@ public final class Bootstrap {
         var port = System.getProperty("service.bind.port", "25577");
         LOGGER.info(MiniMessage.miniMessage().deserialize("<gold>Supported Native Minecraft Version: <green><version><gray>(<protocol>)", TagResolver.builder().tag("version", VERSION_TAG).tag("protocol", PROTOCOL_TAG).build()));
         server.start(host, Integer.parseInt(port));
-        System.exit(0); // CloudNet Stupid Issue - Cloudnet needs be active wait for this.
+        if (MinecraftServer.isStopping()) {
+            System.exit(0); // CloudNet Stupid Issue - Cloudnet needs be active wait for this.
+        }
     }
 
 }
