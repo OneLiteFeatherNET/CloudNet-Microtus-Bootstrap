@@ -17,6 +17,11 @@ public final class Bootstrap {
     private final static BiFunction<ArgumentQueue, Context, Tag> PROTOCOL_TAG = (argumentQueue, context) -> Tag.preProcessParsed(String.valueOf(MinecraftServer.PROTOCOL_VERSION));
 
     public static void main(String[] args) {
+        var velocitySecret = System.getProperty("minestom-velocity-secret", "");
+        if (!velocitySecret.isEmpty()) {
+            VelocityProxy.enable(velocitySecret);
+        }
+
         var server = MinecraftServer.init();
         var host = System.getProperty("service.bind.host", "localhost");
         var port = System.getProperty("service.bind.port", "25577");

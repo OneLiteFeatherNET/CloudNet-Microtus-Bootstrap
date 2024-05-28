@@ -1,42 +1,24 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import org.ajoberstar.grgit.Grgit
-import java.util.*
-
 plugins {
-    id("java")
+    java
     application
     id("org.ajoberstar.grgit") version "5.2.2"
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("io.github.goooler.shadow") version "8.1.7"
+    alias(libs.plugins.publishdata)
+    `maven-publish`
 }
-
-var baseVersion by extra("1.0.0")
-var versionExtension by extra("")
-var snapshot by extra("-SNAPSHOT")
 
 group = "net.onelitefeather.microtus.cloudnet"
-ext {
-    val git: Grgit = Grgit.open {
-        dir = File("$rootDir/.git")
-    }
-    val revision = git.head().abbreviatedId
-    if (snapshot.isNotEmpty()) {
-        versionExtension = "%s+%s".format(Locale.ROOT, snapshot, revision)
-    } else {
-        versionExtension = ""
-    }
-
-}
-
-version = "%s%s".format(Locale.ROOT, baseVersion, versionExtension)
+version = "1.1.o-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    maven("https://oss.sonatype.org/content/repositories/snapshots")
+    maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
     maven("https://jitpack.io")
 }
 
 dependencies {
-    implementation("net.onelitefeather.microtus:Minestom:1.3.1")
+    implementation(platform(libs.microtus.bom))
+    compileOnly(libs.microtus.core)
     implementation("net.kyori:adventure-text-minimessage:4.16.0")
 
 }
@@ -50,5 +32,34 @@ tasks {
         archiveVersion.set("")
         archiveClassifier.set("")
         archiveBaseName.set("application")
+    }
+}
+
+publishData {
+    addBuildData()
+    useEldoNexusRepos(false)
+    publishTask("shadowJar")
+}
+
+publishing {
+    publications.create<MavenPublication>("maven") {
+        // Configure our maven publication
+        publishData.configurePublication(this)
+    }
+
+    repositories {
+        // We add EldoNexus as our repository. The used url is defined by the publish data.
+        maven {
+            authentication {
+                credentials(PasswordCredentials::class) {
+                    // Those credentials need to be set under "Settings -> Secrets -> Actions" in your repository
+                    username = System.getenv("ELDO_USERNAME")
+                    password = System.getenv("ELDO_PASSWORD")
+                }
+            }
+
+            name = "EldoNexus"
+            setUrl(publishData.getRepository())
+        }
     }
 }

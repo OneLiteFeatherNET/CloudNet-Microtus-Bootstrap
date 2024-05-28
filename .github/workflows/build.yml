@@ -19,19 +19,14 @@ jobs:
           distribution: temurin
           cache: gradle
           java-version: 21
-      - name: Clean Build
+      - name: Publish to Jar
         run: |
           git config --global user.email "no-reply@github.com"
           git config --global user.name "Github Actions"
-          ./gradlew shadowJar
-      - name: Determine release status
-        if: ${{ runner.os == 'Linux' }}
-        run: |
-          if [ "$(./gradlew properties | awk '/^version:/ { print $2; }' | grep '\-SNAPSHOT')" ]; then
-            echo "STATUS=snapshot" >> $GITHUB_ENV
-          else
-            echo "STATUS=release" >> $GITHUB_ENV
-          fi
+          ./gradlew publish
+        env:
+          ELDO_USERNAME: "${{ secrets.ELDO_USERNAME }}"
+          ELDO_PASSWORD: "${{ secrets.ELDO_PASSWORD }}"
       - name: Archive Artifacts
         uses: actions/upload-artifact@v4
         with:
