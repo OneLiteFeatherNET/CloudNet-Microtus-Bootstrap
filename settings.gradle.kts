@@ -10,7 +10,7 @@ pluginManagement {
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("microtus", "1.4.2-SNAPSHOT")
+            version("microtus", "1.4.2")
             version("publishdata", "1.4.0")
 
             library("microtus-bom", "net.onelitefeather.microtus", "bom").versionRef("microtus")
