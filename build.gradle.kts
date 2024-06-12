@@ -23,7 +23,7 @@ configurations.all {
 dependencies {
     implementation(platform(libs.microtus.bom))
     implementation(libs.microtus.core)
-    implementation("net.kyori:adventure-text-minimessage:4.16.0")
+    implementation("net.kyori:adventure-text-minimessage:4.17.0")
 
 
 }
