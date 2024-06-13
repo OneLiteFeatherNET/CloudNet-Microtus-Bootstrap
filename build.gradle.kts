@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "net.onelitefeather.microtus.cloudnet"
-version = "1.1.1"
+version = "1.1.2"
 
 repositories {
     mavenCentral()
