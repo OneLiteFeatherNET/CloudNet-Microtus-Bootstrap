@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "net.onelitefeather.microtus.cloudnet"
-version = "1.1.0-SNAPSHOT"
+version = "1.1.1"
 
 repositories {
     mavenCentral()
@@ -42,7 +42,7 @@ tasks {
 
 publishData {
     addBuildData()
-    useEldoNexusRepos(false)
+    useEldoNexusRepos(true)
     publishTask("shadowJar")
 }
 
