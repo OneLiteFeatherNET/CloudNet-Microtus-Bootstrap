@@ -151,7 +151,7 @@ public class FakePlayerController {
      * @param hand The hand in which an ite mshould be.
      */
     public void useItem(Player.Hand hand) {
-        addToQueue(new ClientUseItemPacket(hand, 0));
+        addToQueue(new ClientUseItemPacket(hand, 0, 0f, 0f));
     }
 
     /**
