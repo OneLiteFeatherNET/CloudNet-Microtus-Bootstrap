@@ -1,19 +1,18 @@
 plugins {
     java
     application
-    id("io.github.goooler.shadow") version "8.1.7"
+    id("com.gradleup.shadow") version "8.3.3"
     alias(libs.plugins.publishdata)
     `maven-publish`
 }
 
 group = "net.onelitefeather.microtus.cloudnet"
-version = "1.1.2"
+version = "1.2.0"
 
 repositories {
     mavenCentral()
     maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
     maven("https://s01.oss.sonatype.org/content/groups/staging/")
-    maven("https://jitpack.io")
 }
 
 configurations.all {
@@ -23,9 +22,6 @@ configurations.all {
 dependencies {
     implementation(platform(libs.microtus.bom))
     implementation(libs.microtus.core)
-    implementation("net.kyori:adventure-text-minimessage:4.17.0")
-
-
 }
 
 application {
