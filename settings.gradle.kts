@@ -10,11 +10,12 @@ pluginManagement {
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("microtus", "1.5.0-SNAPSHOT")
+            version("microtus", "1.6.0-SNAPSHOT")
             version("publishdata", "1.4.0")
 
             library("microtus-bom", "net.onelitefeather.microtus", "bom").versionRef("microtus")
             library("microtus-core", "net.onelitefeather.microtus", "Microtus").withoutVersion()
+            library("microtus-test", "net.onelitefeather.microtus.testing", "testing").withoutVersion()
 
             plugin("publishdata", "de.chojo.publishdata").versionRef("publishdata")
 

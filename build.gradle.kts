@@ -28,6 +28,12 @@ application {
     mainClass.set("net.onelitefeather.microtus.cloudnet.Bootstrap")
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
 tasks {
     shadowJar {
         archiveVersion.set("")
