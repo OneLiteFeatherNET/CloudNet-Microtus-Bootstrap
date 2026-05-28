@@ -1,7 +1,7 @@
 plugins {
     java
     application
-    id("com.gradleup.shadow") version "8.3.6"
+    id("com.gradleup.shadow") version "9.4.2"
     alias(libs.plugins.publishdata)
     `maven-publish`
 }
